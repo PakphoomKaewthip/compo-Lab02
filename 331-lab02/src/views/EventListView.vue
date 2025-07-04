@@ -36,7 +36,18 @@ const events = ref<Event[]>([
     time: '11:00' ,
     petsAllowed: false ,
     organizer: 'Carey Walse'
-  }
+  },
+  {
+    id: 1111111,
+    category: "Test",
+    title: "iiamwinn",
+    description: "I wanna to sleep.",
+    location: "Chiang Mai",
+    date: "October 06, 2022",
+    time: "11:11",
+    petsAllowed: false,
+    organizer: "Pakphoom"
+    }
 ])
 </script>
 
