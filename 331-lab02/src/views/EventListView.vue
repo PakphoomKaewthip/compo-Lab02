@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EventCard from '@/components/EventCard.vue'
 import CategoryInfo from '@/components/CategoryInfo.vue'
-import EventService from '@/services/EventService.ts'
+import EventService from '../../services/EventService'
 import type { Event } from '@/types'
 import { ref , onMounted } from 'vue'
 
