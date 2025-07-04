@@ -8,7 +8,8 @@ import { RouterLink, RouterView } from 'vue-router'
       <div class="wrapper">
         <nav>
           <RouterLink to="/">Event</RouterLink> |
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/about">About</RouterLink> |
+          <RouterLink to="/students">Students</RouterLink>
         </nav>
       </div>
     </header>
@@ -27,6 +28,9 @@ import { RouterLink, RouterView } from 'vue-router'
 
 nav {
   padding: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 nav a {
