@@ -16,19 +16,26 @@ const props = defineProps({
   page: {
     type: Number,
     required: true
+  },
+  size: {
+    type: Number,
+    required: true
   }
 })
+
 const page = computed(() => props.page)
-onMounted (() => {
+const size = computed(() => props.size)
+
+onMounted(() => {
   watchEffect(() => {
     events.value = null
-    EventService.getEvents(2 , page.value)
+    EventService.getEvents(size.value, page.value)
       .then((response) => {
         events.value = response.data
-        totalEvents.value = response.headers['x-total-count']
+        totalEvents.value = parseInt(response.headers['x-total-count'])
       })
       .catch((error) => {
-        console.error('There was an error!' , error)
+        console.error('There was an error!', error)
       })
   })
 })
@@ -42,17 +49,19 @@ onMounted (() => {
     <div class="pagination">
       <RouterLink
         id="page-prev"
-        :to="{ name: 'event-list-view' , query: { page: page - 1} }"
-        rel="prev"
-        v-if="page != 1"
-        >&#60; Prev Page</RouterLink>
+        :to="{ name: 'event-list-view', query: { page: page - 1, size: size } }"
+        v-if="page > 1"
+        >&#60; Prev Page
+      </RouterLink>
 
-      <RouterLink 
+      <RouterLink
         id="page-next"
-        :to="{ name: 'event-list-view' , query: { page: page + 1} }"
-        rel="next"
+        :to="{ name: 'event-list-view', query: { page: page + 1, size: size } }"
         v-if="hasNextPage"
-        >Next Page &#62;</RouterLink>
+        >Next Page &#62;
+      </RouterLink>
+
+
     </div>
   </div>      
   <div class="category">
